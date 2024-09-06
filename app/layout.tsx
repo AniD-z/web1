@@ -9,8 +9,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Hoobank",
-  description: "The Next Generation Banking",
+  title: "SNTLY",
+  description: "Threaded sustainably always",
 };
 
 export default function RootLayout({

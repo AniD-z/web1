@@ -50,12 +50,11 @@ const Business = () => (
     >
       <h2 className="heading2">
         You do the business, <br className="sm:block hidden" /> we&#8217;ll
-        handle the money.
+        handle the Cloth.
       </h2>
       <p className="paragraph max-w-[470px] mt-5">
-        With the right credit card, you can improve your financial life by
-        building credit, earning rewards and saving money. But with hundreds of
-        credit cards on the market.
+      We merge artisanal techniques with digital precision to craft fabrics that blend timeless
+      elegance with forward-thinking sustainability.
       </p>
 
       <Button styles={`mt-10`} />

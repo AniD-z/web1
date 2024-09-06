@@ -31,7 +31,7 @@ export default function Home() {
           <Billing />
           <CardDeal />
           <Testimonials />
-          <Clients />
+          
           <CTA />
           <Footer />
         </section>

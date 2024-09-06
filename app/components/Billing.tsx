@@ -34,31 +34,13 @@ const Billing = () => (
       whileInView="show"
       viewport={{ once: true }}
     >
-      <h2 className="heading2">
-        Easily control your <br className="sm:block hidden" /> billing &
-        invoicing
-      </h2>
-      <p className="paragraph max-w-[470px] mt-5">
-        Elit enim sed massa etiam. Mauris eu adipiscing ultrices ametodio aenean
-        neque. Fusce ipsum orci rhoncus aliporttitor integer platea placerat.
-      </p>
-
-      <div className="flex flex-row flex-wrap sm:mt-10 mt-6">
-        <Image
-          src={apple}
-          alt="google_play"
-          width={128.86}
-          height={42.05}
-          className="object-contain mr-5 cursor-pointer"
-        />
-        <Image
-          src={google}
-          alt="google_play"
-          width={144.17}
-          height={43.08}
-          className="object-contain cursor-pointer"
-        />
-      </div>
+      <Image
+        src={bill}
+        alt="billing"
+        width={0}
+        height={0}
+        className="w-[100%] h-[100%] relative z-[5]"
+      />
     </motion.div>
   </section>
 );

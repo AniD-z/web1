@@ -38,21 +38,21 @@ import {
     {
       id: "feature-1",
       icon: star,
-      title: "Rewards",
+      title: "Request for Quotation",
       content:
         "The best credit cards offer some tantalizing combinations of promotions and prizes",
     },
     {
       id: "feature-2",
-      icon: shield,
-      title: "100% Secured",
+      icon: star,
+      title: "Request a Designer",
       content:
         "We take proactive steps make sure your information and transactions are secure.",
     },
     {
       id: "feature-3",
       icon: send,
-      title: "Balance Transfer",
+      title: "Request a Sample",
       content:
         "A balance transfer credit card can save you a lot of money in interest charges.",
     },
@@ -88,19 +88,19 @@ import {
   export const stats = [
     {
       id: "stats-1",
-      title: "User Active",
-      value: "3800+",
+      title: "Happy Customers",
+      value: "1200+",
     },
     {
       id: "stats-2",
       title: "Trusted by Company",
-      value: "230+",
+      value: "50+",
     },
-    {
-      id: "stats-3",
-      title: "Transaction",
-      value: "$230M+",
-    },
+    //{
+     // id: "stats-3",
+    //  title: "Transaction",
+    //  value: "$230M+",
+    //},
   ];
   
   export const footerLinks = [
@@ -115,18 +115,8 @@ import {
           name: "How it Works",
           link: "https://www.hoobank.com/how-it-works/",
         },
-        {
-          name: "Create",
-          link: "https://www.hoobank.com/create/",
-        },
-        {
-          name: "Explore",
-          link: "https://www.hoobank.com/explore/",
-        },
-        {
-          name: "Terms & Services",
-          link: "https://www.hoobank.com/terms-and-services/",
-        },
+      
+        
       ],
     },
     {
@@ -140,18 +130,8 @@ import {
           name: "Partners",
           link: "https://www.hoobank.com/partners/",
         },
-        {
-          name: "Suggestions",
-          link: "https://www.hoobank.com/suggestions/",
-        },
-        {
-          name: "Blog",
-          link: "https://www.hoobank.com/blog/",
-        },
-        {
-          name: "Newsletters",
-          link: "https://www.hoobank.com/newsletters/",
-        },
+       
+       
       ],
     },
     {

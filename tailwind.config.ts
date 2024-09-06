@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#00040f",
-        secondary: "#00f6ff",
-        dimWhite: "rgba(255, 255, 255, 0.7)",
-        dimBlue: "rgba(9, 151, 124, 0.1)",
+        primary: "#295F98",
+        secondary: "#CDC2A5",
+        dimWhite: "rgba(255, 255, 255, 0.9)",
+        dimBlue: "rgba(9, 151, 124, 0.2)",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
