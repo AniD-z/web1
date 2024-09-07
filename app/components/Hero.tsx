@@ -10,7 +10,7 @@ const Hero = () => {
     <section id="home" className="flex md:flex-row flex-col paddingY">
       <motion.div
         className="flex-1 flexStart flex-col xl:px-0 paddingX"
-        variants={slideIn("left", "tween", 0.2, 1.5)}
+        variants={slideIn("left", "tween", 0.5, 1.5)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
@@ -33,7 +33,7 @@ const Hero = () => {
 
       <motion.div
         className="flex-1 flexCenter md:my-0 my-10 relative"
-        variants={slideIn("right", "tween", 0.2, 1.5)}
+        variants={slideIn("right", "tween", 0.2, 1)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
