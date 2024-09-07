@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Billing = () => (
   <section id="product" className="sectionReverse">
     <motion.div
-  className="sectionImgReverse"
+  className="sectionImgReverse relative"
   variants={slideIn("left", "tween", 0.1, 0.5)}
   initial="hidden"
   whileInView="show"
@@ -28,13 +28,7 @@ const Billing = () => (
   {/* gradient end */}
 </motion.div>
 
-<motion.div
-  className="sectionInfo"
-  variants={slideIn("right", "tween", 0.1, 0.5)}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true }}
->
+<div className="sectionInfo">
   <Image
     src={bill}
     alt="billing"
@@ -43,7 +37,7 @@ const Billing = () => (
     height={600}
     className="w-[100%] h-[100%] relative z-[5]"
   />
-</motion.div>
+</div>
 
   </section>
 );
