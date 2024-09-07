@@ -24,10 +24,6 @@ const Hero = () => {
             <GetStarted />
           </div>
         </div>
-
-        <h1 className="font-poppins font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full">
-        Always.
-        </h1>
         <p className="paragraph max-w-[470px] mt-5">
         Our team of experts uses a methodology to identify the finest fabrics that are most likely to meet your
         customers' needs. We examine thread counts, fabric weights, and weave densities to ensure the exceptional quality

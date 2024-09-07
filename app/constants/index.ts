@@ -40,21 +40,21 @@ import {
       icon: star,
       title: "Request for Quotation",
       content:
-        "The best credit cards offer some tantalizing combinations of promotions and prizes",
+        "lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa",
     },
     {
       id: "feature-2",
       icon: star,
       title: "Request a Designer",
       content:
-        "We take proactive steps make sure your information and transactions are secure.",
+        "lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa",
     },
     {
       id: "feature-3",
       icon: send,
       title: "Request a Sample",
       content:
-        "A balance transfer credit card can save you a lot of money in interest charges.",
+        "lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa lba blablaa",
     },
   ];
   
