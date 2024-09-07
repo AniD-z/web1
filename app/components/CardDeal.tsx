@@ -15,12 +15,10 @@ const CardDeal = () => (
       viewport={{ once: true }}
     >
       <h2 className="heading2">
-        Find a better card deal <br className="sm:block hidden" /> in few easy
-        steps.
+      Create and communicate product information  <br className="sm:block hidden" /> with absolute clarity
       </h2>
       <p className="paragraph max-w-[470px] mt-5">
-        Arcu tortor, purus in mattis at sed integer faucibus. Aliquet quis
-        aliquet eget mauris tortor.ç Aliquet ultrices ac, ametau.
+      Our recent R&D focus explores both sustainability and digital communication within manufacturing.
       </p>
 
       <Button styles={`mt-10`} />

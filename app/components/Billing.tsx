@@ -1,5 +1,6 @@
 "use client";
-import { apple, bill, google } from "../../public";
+import {  bill } from "../../public";
+import textile from '../../public/textile.png';
 import { slideIn } from "../styles/animations";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -30,7 +31,7 @@ const Billing = () => (
 
 <div className="sectionInfo">
   <Image
-    src={bill}
+    src={textile}
     alt="billing"
     layout="responsive"
     width={800}
