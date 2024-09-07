@@ -31,13 +31,7 @@ const Hero = () => {
   </p>
 </motion.div>
 
-<motion.div
-  className="flex-1 flexCenter md:my-0 my-10 relative"
-  variants={slideIn("right", "tween", 0.1, 0.5)}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true }}
->
+<div className="flex-1 flexCenter md:my-0 my-10 relative">
   <Image
     src={robot}
     alt="billing"
@@ -52,7 +46,8 @@ const Hero = () => {
   <div className="absolute z-[1] w-[60%] h-[60%] rounded-full white__gradient bottom-40" />
   <div className="absolute z-[0] w-[40%] h-[40%] right-20 bottom-20 blue__gradient" />
   {/* gradient end */}
-</motion.div>
+</div>
+
 
 
       <div className="ss:hidden flexCenter">
