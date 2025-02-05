@@ -9,7 +9,7 @@ import { FloatingPaths } from "../components/FloatingPaths"
 
 const Hero = () => {
   return (
-    <section id="home" className="flex md:flex-row flex-col paddingY relative">
+    <section id="/home" className="flex md:flex-row flex-col paddingY relative">
       {/* Add FloatingPaths here */}
       <div className="absolute inset-0 z-0">
         <FloatingPaths position={1} />
