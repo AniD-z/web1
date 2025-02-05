@@ -9,10 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#295F98",
-        secondary: "#E1D7C6",
-        dimWhite: "rgba(255, 255, 255, 0.9)",
-        dimBlue: "rgb(234, 228, 221, 0.8)",
+        primary: "#e6e6e6",
+        secondary: "#11101d", // Soft grayish tone for secondary elements
+        dimWhite: "rgba(255, 255, 255, 0.9)", // Dim White for softer text
+        dimBlue: "rgba(66, 71, 91, 0.1)", // Subtle blue tint (for borders or shadows)
+        grayLight: "#dcdcdc", // Light gray
+        grayDark: "#14101d", // Dark gray
+        black: "#11101d", // Black text or accents
+        white: "#ffffff", // Pure white background
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -29,4 +33,6 @@ const config: Config = {
   },
   plugins: [],
 }
+
 export default config
+

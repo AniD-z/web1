@@ -2,82 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: #ffffff; /* Set the body background to white */
+}
+
+/* Ensure other sections are not inheriting a darker background */
+* {
+  scroll-behavior: smooth;
+  background-color: transparent; /* This helps prevent unexpected background color inheritance */
+}
+
 :root {
   --black-gradient: linear-gradient(
     144.39deg,
     #ffffff -278.56%,
     #6d6d6d -78.47%,
-    #11101d 98.61%
+    #ffffff 98.61%
   );
   --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
 }
 
-
-* {
-  scroll-behavior: smooth;
-}
-
-.text-gradient {
-  background: radial-gradient(
-    64.18% 64.18% at 71.16% 35.69%,
-    #def9fa 0.89%,
-    #bef3f5 17.23%,
-    #9dedf0 42.04%,
-    #7de7eb 5.12%,
-    #fad791 51.54%,
-    #EAE4DD 90%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
+/* Background Gradients */
 .bg-blue-gradient {
   background: linear-gradient(
     157.81deg,
-    #def9fa -43.27%,
-    #bef3f5 -21.24%,
-    #9dedf0 12.19%,
-    #7de7eb 29.82%,
-    #E1D7C6 51.94%,
-    #EAE4DD 90.29%
+    #f5f5f5 -43.27%, /* light gray */
+    #dcdcdc -21.24%, /* medium gray */
+    #b5b5b5 12.19%, /* darker gray */
+    #8e8e8e 29.82%, /* dark gray */
+    #707070 51.94%, /* dark gray */
+    #505050 90.29% /* near black */
   );
 }
 
 .bg-black-gradient {
   background: linear-gradient(
     144.39deg,
-    #ffffff -278.56%,
-    #6d6d6d -78.47%,
-    #11101d 91.61%
+    #ffffff -278.56%, /* white */
+    #6d6d6d -78.47%, /* medium gray */
+    #11101d 91.61% /* black */
   );
 }
 
 .bg-black-gradient-2 {
   background: linear-gradient(
     -168.39deg,
-    #ffffff -278.56%,
-    #6d6d6d -78.47%,
-    #11101d 91.61%
+    #ffffff -278.56%, /* white */
+    #6d6d6d -78.47%, /* medium gray */
+    #11101d 91.61% /* black */
   );
 }
 
 .bg-gray-gradient {
   background: linear-gradient(
     153.47deg,
-    rgba(255, 255, 255, 0) -341.94%,
-    #14101d 95.11%
+    rgba(255, 255, 255, 0) -341.94%, /* transparent white */
+    #14101d 95.11% /* black */
   );
 }
 
 .bg-discount-gradient {
-  background: linear-gradient(125.17deg, #272727 2%, #EAE4DD 100%);
+  background: linear-gradient(125.17deg, #272727 2%, #f5f5f5 100%);
 }
 
 .box-shadow {
-  box-shadow: 0px 20px 100px -10px rgba(214, 212, 110, 0.708);
+  box-shadow: 0px 20px 100px -10px rgba(0, 0, 0, 0.1); /* softer shadow */
 }
 
+/* Sidebar Animation */
 .sidebar {
   -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -105,6 +97,7 @@
   }
 }
 
+/* Hover Effects */
 .feature-card:hover {
   background: var(--black-gradient);
   box-shadow: var(--card-shadow);
@@ -122,8 +115,9 @@
   background: var(--black-gradient);
 }
 
+/* Blurred Gradient Backgrounds */
 .blue__gradient {
-  background: linear-gradient(180deg, rgba(249, 249, 250, 0.953) 5%, #EAE4DD 100%);
+  background: linear-gradient(180deg, rgba(249, 249, 250, 0.953) 5%, #f5f5f5 100%);
   filter: blur(123px);
 }
 
@@ -138,15 +132,15 @@
 }
 
 @layer utilities {
-  /* Styles */
+  /* Layout */
   .boxWidth {
     @apply xl:max-w-[1280px] w-full;
   }
   .heading2 {
-    @apply font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full;
+    @apply font-poppins font-semibold xs:text-[48px] text-[40px] text-black xs:leading-[76.8px] leading-[66.8px] w-full;
   }
   .paragraph {
-    @apply font-poppins font-normal text-dimWhite text-[18px] leading-[30.8px];
+    @apply font-poppins font-normal text-gray-800 text-[18px] leading-[30.8px]; /* dark gray text */
   }
   .flexCenter {
     @apply flex justify-center items-center;
@@ -169,6 +163,7 @@
   .marginY {
     @apply sm:my-16 my-6;
   }
+
   /* Layout */
   .section {
     @apply flex md:flex-row flex-col paddingY;
