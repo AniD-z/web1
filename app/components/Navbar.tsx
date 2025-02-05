@@ -18,7 +18,7 @@ const Navbar = () => {
       whileInView="show"
       viewport={{ once: true }}
     >
-      <Image src={logo} alt="hoobank" width={124} height={32} loading="eager" />
+      <Image src={logo} alt="hoobank" width={384} height={96} loading="eager" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
@@ -56,7 +56,7 @@ const Navbar = () => {
                 key={nav.id}
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
                   active === nav.title ? "text-secondary" : "text-white"
-                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
+                } ${index === navLinks.length - 1 ? "mb-1" : "mb-5"}`}
                 onClick={() => setActive(nav.title)}
               >
                 <a href={`#${nav.id}`}>{nav.title}</a>
