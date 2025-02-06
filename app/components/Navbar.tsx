@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { navVariants } from "../styles/animations";
 import Image from "next/image";
@@ -11,10 +11,30 @@ const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
+  // UseRef with correct type
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  // Close the menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setToggle(false); // Close the menu if click is outside
+      }
+    };
+
+    if (toggle) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [toggle]);
+
   return (
     <motion.nav
-      className="w-full flex px-10 py-0 justify-between items-center navbar bg-black overflow-hidden 
-                sm:border-radius-md md:border-radius-sm lg:border-radius-md border-radius-md" 
+      className="w-full flex px-16 py-0 justify-between items-center navbar bg-black overflow-hidden 
+                sm:border-radius-md md:border-radius-sm lg:border-radius-md border-radius-md"
       variants={navVariants}
       initial="hidden"
       whileInView="show"
@@ -31,7 +51,6 @@ const Navbar = () => {
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
           >
-            {/* Replaced <a> with Link */}
             <Link href={nav.path}>{nav.title}</Link>
           </li>
         ))}
@@ -47,29 +66,30 @@ const Navbar = () => {
           className="object-contain"
           onClick={() => setToggle(!toggle)}
         />
+      </div>
 
-        <div
-          className={`${
-            !toggle ? "hidden" : "flex"
-          } p-6 bg-black-gradient absolute right-0 mx-4 my-2 min-w-[160px] rounded-xl sidebar z-50`}
-        >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col">
-            {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-medium cursor-pointer text-[12px] ${
-                  active === nav.title ? "text-secondary" : "text-white"
-                } ${index === navLinks.length - 1 ? "mb-1" : "mb-5"}`}
-                onClick={() => setActive(nav.title)}
-              >
-                {/* Replaced <a> with Link */}
-                <Link href={nav.path} key={nav.id}>
-                  {nav.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Sidebar menu with full-page background but leaving a gap on the left */}
+      <div
+        ref={menuRef}
+        className={`${
+          !toggle ? "hidden" : "flex"
+        } p-6 bg-black bg-opacity-50 absolute top-0 right-0 w-[calc(100%-60px)] h-full z-50`}
+      >
+        <ul className="list-none flex justify-start items-center flex-1 flex-col pl-6">
+          {navLinks.map((nav, index) => (
+            <li
+              key={nav.id}
+              className={`font-poppins font-medium cursor-pointer text-[24px] ${
+                active === nav.title ? "text-secondary" : "text-white"
+              } ${index === navLinks.length - 1 ? "mb-1" : "mb-5"}`}
+              onClick={() => setActive(nav.title)}
+            >
+              <Link href={nav.path} key={nav.id}>
+                {nav.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </motion.nav>
   );
