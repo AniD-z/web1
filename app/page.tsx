@@ -14,7 +14,7 @@ import {
 export default function Home() {
   return (
     <main className=" bg-primary w-full overflow-hidden font-poppins">
-      <header className="paddingX flexCenter">
+      <header className="flexCenter">
         <nav className="boxWidth">
           <Navbar />
         </nav>
@@ -26,15 +26,20 @@ export default function Home() {
       </section>
       <section className=" bg-primary paddingX flexStart">
         <section className="boxWidth">
-          <Stats />
           <Business />
           <Billing />
           <CardDeal />
+          <CTA />
           <Testimonials />
           
-          <CTA />
-          <Footer />
+          
         </section>
+      </section>
+      <section className=" bg-primary ">
+      <section className="boxWidth">
+      <Footer />
+      </section>
+
       </section>
     </main>
   );

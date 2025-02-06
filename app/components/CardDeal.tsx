@@ -15,13 +15,12 @@ const CardDeal = () => (
       viewport={{ once: true }}
     >
       <h2 className="heading2">
-      Create and communicate product information  <br className="sm:block hidden" /> with absolute clarity
+      Trusted by Leading Luxury Brands
       </h2>
       <p className="paragraph max-w-[470px] mt-5">
-      Our recent R&D focus explores both sustainability and digital communication within manufacturing.
+      To be the most reliable and innovative apparel-sourcing partner, empowering global brands with sustainable and efficient manufacturing solutions.
       </p>
 
-      <Button styles={`mt-10`} />
     </motion.div>
 
     <motion.div

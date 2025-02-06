@@ -9,17 +9,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#e6e6e6",
-        secondary: "#11101d", // Soft grayish tone for secondary elements
+        primary: "#ffffff",
+        secondary: "#e6e6e6", // Soft grayish tone for secondary elements
         dimWhite: "rgba(255, 255, 255, 0.9)", // Dim White for softer text
-        dimBlue: "rgba(66, 71, 91, 0.1)", // Subtle blue tint (for borders or shadows)
+        dimBlue: "rgba(62, 70, 103, 0.1)", // Subtle blue tint (for borders or shadows)
         grayLight: "#dcdcdc", // Light gray
         grayDark: "#14101d", // Dark gray
         black: "#11101d", // Black text or accents
         white: "#ffffff", // Pure white background
+        
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '0.125rem',
+        'md': '0.25rem', // Custom border radius for medium
+        'lg': '0.375rem',
+        'full': '9999px', // Custom border radius for full circle (full radius)
+        'curved': '1.25rem', // Custom border radius for a more curved edge
       },
     },
     screens: {
@@ -30,7 +39,9 @@ const config: Config = {
       lg: "1200px",
       xl: "1700px",
     },
+    
   },
+  
   plugins: [],
 }
 

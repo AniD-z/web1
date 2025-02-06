@@ -16,22 +16,9 @@ import {
   } from "../../public";
   
   export const navLinks = [
-    {
-      id: "#home",
-      title: "Home",
-    },
-    {
-      id: "#features",
-      title: "Features",
-    },
-    {
-      id: "products",
-      title: "Products",
-    },
-    {
-      id: "clients",
-      title: "Clients",
-    },
+    { id: "home", title: "Home", path: "/" },
+    { id: "products", title: "Products", path: "/products" },
+    { id: "contacts", title: "Contacts", path: "/contacts" }
   ];
   
   export const features = [
@@ -104,19 +91,17 @@ import {
   ];
   
   export const footerLinks = [
+      
     {
-      title: "Useful Links",
+      title: "Community",
       links: [
         {
-          name: "Content",
-          link: "https://www.hoobank.com/content/",
-        },
-        {
-          name: "How it Works",
-          link: "https://www.hoobank.com/how-it-works/",
+          name: "Help Center",
+          link: "https://www.hoobank.com/help-center/",
         },
       
-        
+       
+       
       ],
     },
     {
@@ -126,10 +111,7 @@ import {
           name: "Help Center",
           link: "https://www.hoobank.com/help-center/",
         },
-        {
-          name: "Partners",
-          link: "https://www.hoobank.com/partners/",
-        },
+      
        
        
       ],
@@ -141,10 +123,7 @@ import {
           name: "Our Partner",
           link: "https://www.hoobank.com/our-partner/",
         },
-        {
-          name: "Become a Partner",
-          link: "https://www.hoobank.com/become-a-partner/",
-        },
+        
       ],
     },
   ];

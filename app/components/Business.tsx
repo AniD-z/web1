@@ -40,40 +40,34 @@ const FeatureCard = ({ icon, title, content, index }: featureCardProps) => (
 );
 
 const Business = () => (
-  <section id="features" className="section">
+  <section id="features" className="section h-screen flex items-center justify-center">
     <motion.div
-      className="sectionInfo"
+      className="sectionInfo flex flex-col items-center text-center w-full" // Added w-full to ensure full width
       variants={slideIn("left", "tween", 0.2, 1.5)}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
     >
-      <h2 className="heading2">
-        You do the business, <br className="sm:block hidden" /> we&#8217;ll
-        handle the Cloth.
-      </h2>
-      <p className="paragraph max-w-[470px] mt-5">
-      We merge artisanal techniques with digital precision to craft fabrics that blend timeless
-      elegance with forward-thinking sustainability.
-      </p>
+      <h1 className="heading2 paddingX">
+        ABOUT US
+      </h1>
+      
+      <p className=" paragraph max-w-[1020px] mx-auto mt-10 paddingY ">
+  We are a one-stop solution for all your apparel sourcing and supply chain needs.
+  With a strong network of vendors globally. <br /><br />
 
-      <Button styles={`mt-10`} />
+  Our services go beyond sourcing, we provide end-to-end supply chain management, quality control solutions, and full logistics support.
+  From selecting the right suppliers to ensuring top-notch product quality and smooth delivery, we handle everything so you can focus on growing your brand. <br /><br />
+
+  Whether you&rsquo;re a fashion brand, retailer, or designer, we simplify the sourcing process and ensure a hassle-free experience with reliable, efficient, and high-quality solutions. <br /><br />
+</p>
+
+
     </motion.div>
-
-    <div className="sectionImg flex-col">
-      {features.map((feature, index) => (
-        <motion.div
-          key={feature.id}
-          variants={fadeIn("left", "spring", index * 0.5, 1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <FeatureCard key={feature.id} {...feature} index={index} />
-        </motion.div>
-      ))}
-    </div>
   </section>
 );
 
+
 export default Business;
+
+

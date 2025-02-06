@@ -22,7 +22,7 @@ export function FloatingPaths({ position }: FloatingPathsProps) {
 
   return (
     <div className="absolute inset-0 pointer-events-none">
-      <svg className="w-full h-full text-slate-950 dark:text-white" viewBox="50 50 696 316" fill="none">
+      <svg className="w-full h-full text-slate-850 dark:text-secondary" viewBox="20 25 696 316" fill="none">
         {paths.map((path) => (
           <motion.path
             key={path.id}

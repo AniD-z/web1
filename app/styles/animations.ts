@@ -4,7 +4,8 @@ export const navVariants = {
     y: -50,
     transition: {
       type: "spring",
-      damping: 140,
+      damping: 15,  // Lower damping for quicker animation
+      stiffness: 200, // Increase stiffness for more responsiveness
     },
   },
   show: {
@@ -12,10 +13,12 @@ export const navVariants = {
     y: 0,
     transition: {
       type: "spring",
-      delay: 1.5,
+      damping: 15,  // Lower damping for quicker animation
+      stiffness: 200, // Increase stiffness for more responsiveness
     },
   },
 };
+
 
 export const zoomIn = {
   hidden: {
