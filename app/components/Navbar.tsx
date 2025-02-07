@@ -72,7 +72,7 @@ const Navbar = () => {
       </motion.nav>
 
       {/* Add padding to the body to push content below the navbar */}
-      <div className="pt-[70px] sm:pt-[80px] md:pt-[100px] lg:pt-[120px]">
+      <div className="pt-[70px] sm:pt-[80px] md:pt-[100px] lg:pt-[40px]">
         {/* Content of your page goes here */}
         {/* Everything else on the page will be pushed below the navbar */}
       </div>

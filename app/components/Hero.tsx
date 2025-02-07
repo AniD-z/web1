@@ -87,11 +87,10 @@ const Hero = () => {
         whileInView="show"
         viewport={{ once: true }}
       >
-        <div className="flex flex-row justify-between paddingY items-center w-full">
-        <h1 className="flex-1 font-poppins font-semibold ss:text-[48px] text-[36px] text-black ss:leading-[60px] leading-[50px]">
-  Concept to Delivery <br className="sm:block hidden" /> <span className="text-gradient">Solution</span>{" "}
-</h1>
-
+        <div className="flex flex-col ss:flex-row justify-center ss:justify-between items-center w-full paddingY">
+  <h1 className="flex-1 font-poppins font-semibold ss:text-[48px] text-[36px] text-black ss:leading-[60px] leading-[50px] text-center ss:text-left">
+    Concept to Delivery <br className="sm:block hidden" /> <span className="text-gradient">Solution</span>
+  </h1>
 
 
           <div className="ss:flex hidden md:mr-4 mr-0">

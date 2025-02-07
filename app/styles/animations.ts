@@ -19,14 +19,13 @@ export const navVariants = {
   },
 };
 
-
 export const zoomIn = {
   hidden: {
     opacity: 0,
     scale: 0.5,
     transition: {
       type: "spring",
-      delay: 0.5,
+      delay: 0.5, // Optional delay, if needed for other elements
     },
   },
   show: {
@@ -34,7 +33,7 @@ export const zoomIn = {
     scale: 1,
     transition: {
       type: "spring",
-      delay: 0.5,
+      delay: 0.5, // Optional delay
     },
   },
 };

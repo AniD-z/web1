@@ -30,8 +30,8 @@ export function ImageCarousel({ images, className }: CarouselProps) {
           key={image.src}
           className={cn("absolute h-full w-full transition-transform duration-500 ease-in-out", {
             "translate-x-0 opacity-100": index === currentIndex,
-            "translate-x-full opacity-0": index > currentIndex,
-            "-translate-x-full opacity-0": index < currentIndex,
+            "translate-x-full opacity-50": index > currentIndex,
+            "-translate-x-full opacity-50": index < currentIndex,
           })}
         >
           <div className="relative w-full h-0 pb-[200%] sm:pb-[225%] lg:pb-[100%] md:pb-[100%]">
