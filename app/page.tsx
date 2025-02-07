@@ -9,7 +9,9 @@ import {
   Clients,
   CTA,
   Footer,
+
 } from "./components";
+import SineCurveAnimation from "./components/SineCurveAnimation"
 
 export default function Home() {
   return (
@@ -27,12 +29,10 @@ export default function Home() {
       <section className=" bg-primary paddingX flexStart">
         <section className="boxWidth">
           <Business />
-          <Billing />
+          <SineCurveAnimation />
           <CardDeal />
           <CTA />
           <Testimonials />
-          
-          
         </section>
       </section>
       <section className=" bg-primary ">

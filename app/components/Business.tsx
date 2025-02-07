@@ -52,7 +52,7 @@ const Business = () => (
         ABOUT US
       </h1>
       
-      <p className=" paragraph max-w-[1020px] mx-auto mt-10 paddingY ">
+      <p className=" paragraph max-w-[1020px] mx-auto mt-10 ">
   We are a one-stop solution for all your apparel sourcing and supply chain needs.
   With a strong network of vendors globally. <br /><br />
 

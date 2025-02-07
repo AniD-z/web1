@@ -34,7 +34,7 @@ export function ImageCarousel({ images, className }: CarouselProps) {
             "-translate-x-full opacity-0": index < currentIndex,
           })}
         >
-         <div className="relative w-full h-0 pb-[100%] md:h-auto md:w-auto md:max-w-full">
+         <div className="relative w-full h-0 pb-[200%] sm:pb-[225%] lg:pb-[100%] md:pb-[100%]">
   <Image
     src={image.src || "/placeholder.svg"}
     alt={image.alt}
@@ -45,6 +45,7 @@ export function ImageCarousel({ images, className }: CarouselProps) {
     priority={index === 0}
   />
 </div>
+
 
         </div>
       ))}

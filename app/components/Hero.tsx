@@ -74,10 +74,11 @@ const Hero = () => {
   return (
     <section id="/home" className="flex md:flex-row flex-col relative">
       {/* Add FloatingPaths here */}
-      <div className="absolute inset-0 z-0">
-        <FloatingPaths position={1} />
-        <FloatingPaths position={-1} />
-      </div>
+      <div className="absolute inset-0 z-0 hidden sm:block">
+  <FloatingPaths position={1} />
+  <FloatingPaths position={-1} />
+</div>
+
 
       <motion.div
         className="flex-1 flexStart flex-col xl:px-0 padding relative z-10"
