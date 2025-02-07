@@ -16,7 +16,7 @@ export default function Home() {
       </header>
 
       {/* Main content section (with container) */}
-      <div className="flex-grow">
+      <div className="flex-grow padding">
         <div className="w-full h-auto bg-[#141414]">
           <div className="container mx-auto py-8"> {/* Adds padding and ensures center alignment */}
             <DynamicFrameLayout />

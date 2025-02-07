@@ -14,7 +14,7 @@ export function FrameComponent({ video, width, height, className = "" }: FrameCo
       style={{
         width,
         height,
-        transition: "width 0.3s ease-in-out, height 0.3s ease-in-out",
+        transition: "width 0.2s ease-in-out, height 0.2s ease-in-out",
       }}
     >
       <div className="relative w-full h-full overflow-hidden">

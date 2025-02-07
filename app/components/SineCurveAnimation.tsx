@@ -36,9 +36,9 @@ const SineCurveAnimation = () => {
     return () => clearInterval(loopTimer)
   }, [])
 
-  const pathLength = 1300  // Increased the length to give space on both ends
-  const amplitude = 70
-  const frequency = 0.7
+  const pathLength = 1200  // Increased the length to give space on both ends
+  const amplitude = 75
+  const frequency = 0.6
 
   const path =
     `M0,${amplitude} ` +
@@ -50,35 +50,37 @@ const SineCurveAnimation = () => {
     <div className="w-full max-w-5xl mx-auto perspective-1000">
       {/* SVG is shown on medium and larger screens (hidden on small screens) */}
       <svg className="w-full h-96 hidden md:block" viewBox={`0 0 ${pathLength} ${amplitude * 2}`} >
-        <motion.path d={path} fill="none" stroke="#e0e0e0" strokeWidth="2" />
+        <motion.path
+          d={path}
+          fill="none"
+          stroke="#e0e0e0"
+          strokeWidth="2"
+        />
         <motion.path
           d={path}
           fill="none"
           stroke="#3b82f6"
           strokeWidth="2"
           initial={{ pathLength: 0 }}
-          animate={{ pathLength: isComplete ? 1 : currentStep / steps.length }}
+          animate={{ pathLength: currentStep / steps.length }}  // Sync path length with currentStep
           transition={{ duration: 0.5, ease: "easeInOut" }}
         />
         {steps.map((step, index) => {
           const x = (pathLength / (steps.length - 1)) * index
           const y = amplitude + Math.sin((x * frequency * Math.PI) / 180) * amplitude
 
-          // Add a buffer zone on the edges to avoid clipping
-          const adjustedX = Math.min(Math.max(x, 50), pathLength - 50)  // Ensure text stays within the viewBox with a 50px margin on both sides
+          // Ensure the circle and the path stop at the same point
+          const isCircleVisible = currentStep > index  // Show the circle at the current step position
 
           return (
             <motion.g
               key={index}
               initial={{ opacity: 0 }}
-              animate={{ opacity: currentStep > index ? 1 : 0 }}
-              style={{
-                transform: `translateZ(${currentStep * 10}px)`  // Apply the Z-axis translation to bring the elements forward
-              }}
+              animate={{ opacity: isCircleVisible ? 1 : 0 }}  // Fade in the circle based on progress
             >
               <circle cx={x} cy={y} r="10" fill="#3b82f6" />
               <text
-                x={adjustedX}
+                x={x}  // Circle's position is based on the x-coordinate
                 y={y - 15}
                 textAnchor="middle"
                 fontSize="25"
@@ -141,3 +143,4 @@ const SineCurveAnimation = () => {
 }
 
 export default SineCurveAnimation
+

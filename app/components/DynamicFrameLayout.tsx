@@ -69,7 +69,7 @@ export default function DynamicFrameLayout() {
       return "1fr 1fr 1fr"
     }
     const { row } = hovered
-    const hoverSize = 1.5
+    const hoverSize = 1.2
     const nonHoveredSize = (3 - hoverSize) / 2
     return [0, 1, 2].map((r) => (r === row ? `${hoverSize}fr` : `${nonHoveredSize}fr`)).join(" ")
   }
@@ -98,8 +98,8 @@ export default function DynamicFrameLayout() {
           display: "grid",
           gridTemplateRows: getRowSizes(),
           gridTemplateColumns: getColSizes(),
-          gap: "4px",
-          transition: "grid-template-rows 0.4s ease, grid-template-columns 0.4s ease",
+          gap: "12px",
+          transition: "grid-template-rows 0.15s ease, grid-template-columns 0.15s ease",
         }}
       >
         {frames.map((frame) => {
@@ -113,7 +113,7 @@ export default function DynamicFrameLayout() {
               className="relative"
               style={{
                 transformOrigin,
-                transition: "transform 0.4s ease",
+                transition: "transform 0.15s ease",
               }}
               onMouseEnter={() => setHovered({ row, col })}
               onMouseLeave={() => setHovered(null)}
