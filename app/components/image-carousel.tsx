@@ -34,22 +34,18 @@ export function ImageCarousel({ images, className }: CarouselProps) {
             "-translate-x-full opacity-0": index < currentIndex,
           })}
         >
-         <div className="relative w-full h-0 pb-[200%] sm:pb-[225%] lg:pb-[100%] md:pb-[100%]">
-  <Image
-    src={image.src || "/placeholder.svg"}
-    alt={image.alt}
-    layout="fill"            // Ensures the image covers the entire div
-    objectFit="cover"        // Ensures the image covers the area, preserving aspect ratio
-    className="object-cover"
-    sizes="(max-width: 768px) 100vw, 50vw"  // Responsive sizing for different screen widths
-    priority={index === 0}
-  />
-</div>
-
-
+          <div className="relative w-full h-0 pb-[200%] sm:pb-[225%] lg:pb-[100%] md:pb-[100%]">
+            <Image
+              src={image.src || "/placeholder.svg"}
+              alt={image.alt}
+              fill // Use fill for layout
+              className="object-cover" // Use object-cover in the className
+              sizes="(max-width: 768px) 100vw, 50vw"  // Responsive sizing for different screen widths
+              priority={index === 0}
+            />
+          </div>
         </div>
       ))}
     </div>
   )
 }
-
