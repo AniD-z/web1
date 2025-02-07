@@ -32,40 +32,49 @@ const Navbar = () => {
   }, [toggle]);
 
   return (
-    <motion.nav
-      className="w-full flex px-16 py-0 justify-between items-center navbar bg-black overflow-hidden 
-                sm:border-radius-md md:border-radius-sm lg:border-radius-md border-radius-md"
-      variants={navVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true }}
-    >
-      <Image src={logo} alt="hoobank" width={174} height={48} loading="eager" />
+    <>
+      {/* The Navbar */}
+      <motion.nav
+        className="w-full flex px-16 py-0 justify-between items-center navbar bg-black overflow-hidden 
+                sm:border-radius-md md:border-radius-sm lg:border-radius-md border-radius-md fixed top-0 left-0 z-50"
+        variants={navVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <Image src={logo} alt="hoobank" width={174} height={48} loading="eager" />
 
-      <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-        {navLinks.map((nav, index) => (
-          <li
-            key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-secondary ${
-              active === nav.title ? "text-secondary" : "text-white"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.title)}
-          >
-            <Link href={nav.path}>{nav.title}</Link>
-          </li>
-        ))}
-      </ul>
+        <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+          {navLinks.map((nav, index) => (
+            <li
+              key={nav.id}
+              className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-secondary ${
+                active === nav.title ? "text-secondary" : "text-white"
+              } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+              onClick={() => setActive(nav.title)}
+            >
+              <Link href={nav.path}>{nav.title}</Link>
+            </li>
+          ))}
+        </ul>
 
-      <div className="sm:hidden flex flex-1 justify-end items-center">
-        <Image
-          src={toggle ? close : menu}
-          alt="menu"
-          width={14}
-          height={14}
-          priority={true}
-          className="object-contain"
-          onClick={() => setToggle(!toggle)}
-        />
+        <div className="sm:hidden flex flex-1 justify-end items-center">
+          <Image
+            src={toggle ? close : menu}
+            alt="menu"
+            width={14}
+            height={14}
+            priority={true}
+            className="object-contain"
+            onClick={() => setToggle(!toggle)}
+          />
+        </div>
+      </motion.nav>
+
+      {/* Add padding to the body to push content below the navbar */}
+      <div className="pt-[70px] sm:pt-[80px] md:pt-[100px] lg:pt-[120px]">
+        {/* Content of your page goes here */}
+        {/* Everything else on the page will be pushed below the navbar */}
       </div>
 
       {/* Sidebar menu with full-page background but leaving a gap on the left */}
@@ -73,8 +82,20 @@ const Navbar = () => {
         ref={menuRef}
         className={`${
           !toggle ? "hidden" : "flex"
-        } p-6 bg-black bg-opacity-50 absolute top-0 right-0 w-[calc(100%-60px)] h-full z-50`}
+        } p-6 bg-black bg-opacity-90 fixed top-0 right-0 w-[calc(100%-80px)] h-full z-50 sm:left-0`} // Changed to 'fixed' here
       >
+        {/* Close Button positioned at the top-right */}
+        <div className="absolute top-4 right-4">
+          <Image
+            src={close}
+            alt="close menu"
+            width={24}
+            height={24}
+            className="cursor-pointer"
+            onClick={() => setToggle(false)}
+          />
+        </div>
+
         <ul className="list-none flex justify-start items-center flex-1 flex-col pl-6">
           {navLinks.map((nav, index) => (
             <li
@@ -91,7 +112,7 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-    </motion.nav>
+    </>
   );
 };
 
