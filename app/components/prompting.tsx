@@ -116,6 +116,7 @@ const PIXEL_MAP = {
     [1, 0, 0, 0],
     [1, 1, 1, 1],
   ],
+  "-": [[1, 1, 1, 1, 1]],
 }
 
 interface Pixel {
@@ -142,7 +143,7 @@ interface Paddle {
   isVertical: boolean
 }
 
-export function PromptingIsAllYouNeed() {
+export function SntlyStudio() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pixelsRef = useRef<Pixel[]>([])
   const ballRef = useRef<Ball>({ x: 0, y: 0, dx: 0, dy: 0, radius: 0 })
@@ -170,7 +171,7 @@ export function PromptingIsAllYouNeed() {
       const BALL_SPEED = 6 * scale
 
       pixelsRef.current = []
-      const words = ["PROMPTING", "IS ALL YOU NEED"]
+      const words = ["SNTLY", "--STUDIO--"]
 
       const calculateWordWidth = (word: string, pixelSize: number) => {
         return (
@@ -413,10 +414,10 @@ export function PromptingIsAllYouNeed() {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full"
-      aria-label="Prompting Is All You Need: Fullscreen Pong game with pixel text"
+      aria-label="SNTLY --STUDIO--:  Pong game with pixel text"
     />
   )
 }
 
-export default PromptingIsAllYouNeed
+export default SntlyStudio
 

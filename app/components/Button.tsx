@@ -1,12 +1,18 @@
-import React from "react";
+// Button.tsx
+interface ButtonProps {
+  styles: string;
+  onClick?: () => void; // Make onClick optional
+}
 
-const Button = ({ styles }: { styles: string }) => (
-  <button
-    type="button"
-    className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}
-  >
-    Contact Us
-  </button>
-);
+const Button = ({ styles, onClick }: ButtonProps) => {
+  return (
+    <button
+      className={`btn ${styles} text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 ease-in-out bg-gray-600 hover:bg-gray-700 active:scale-95`}
+      onClick={onClick}
+    >
+      Contact
+    </button>
+  );
+};
 
 export default Button;

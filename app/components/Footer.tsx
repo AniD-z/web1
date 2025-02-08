@@ -1,6 +1,7 @@
 import { logo } from "../../public";
 import { footerLinks, socialMedia } from "../constants";
 import Image from "next/image";
+import { SntlyStudio } from "./prompting"
 
 const Footer = () => (
   <section className="flexCenter py-4 flex-col bg-black text-white">
@@ -15,6 +16,7 @@ const Footer = () => (
           priority={true}
           className="object-contain"
         />
+        
       </div>
 
       {/* Copyright text and social media icons on the right */}

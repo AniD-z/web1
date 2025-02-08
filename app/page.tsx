@@ -6,9 +6,10 @@ import {
   Business,
   CardDeal,
   Testimonials,
-  Clients,
+  
   CTA,
   Footer,
+
 
 } from "./components";
 import SineCurveAnimation from "./components/SineCurveAnimation"
@@ -19,6 +20,7 @@ export default function Home() {
       <header className="flexCenter">
         <nav className="boxWidth">
           <Navbar />
+          
         </nav>
       </header>
       <section className=" bg-primary flexStart">
@@ -37,6 +39,7 @@ export default function Home() {
       </section>
       <section className=" bg-primary ">
       <section className="boxWidth">
+        
       <Footer />
       </section>
 
