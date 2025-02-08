@@ -1,146 +1,101 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 const steps = [
-  { text: "Design & Development ", summary: "Understanding your vision, trends, and requirements." },
-  { text: "Sourcing & Vendor Selection", summary: "Finding the right manufacturers and suppliers globally." },
-  { text: "Material & Fabric Procurement ", summary: " Sourcing high-quality fabrics, trims, and materials." },
-  { text: "Sampling & Prototyping", summary: "Creating samples and prototypes for approval." },
-  { text: "Production Management", summary: " Overseeing bulk production with strict quality control." },
-  { text: "In-House Quality Control", summary: "Ensuring high standards through inspections and testing." },
+  { text: "Design & Development", summary: "Design & Development" },
+  { text: "Sourcing & Vendor Selection", summary: " Finding the right manufacturers and suppliers globally" },
+  { text: "Fabric Procurement", summary: "Sourcing high-quality fabrics, trims, and materials" },
+  { text: "Sampling", summary: " Creating samples and prototypes for approval" },
+  { text: "Production Management", summary: "Overseeing bulk production with strict quality control" },
+  { text: "In-House Quality Control", summary: "Ensuring high standards through inspections and testing" },
   { text: "Logistics & Supply Chain", summary: "Managing shipping, warehousing, and smooth delivery" },
 ]
 
-const SineCurveAnimation = () => {
+const OctagonalProcessFlow = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
 
-  // Handle changing the summary
-  const [summaryIndex, setSummaryIndex] = useState(0)
-
   useEffect(() => {
-    if (currentStep < steps.length) {
-      const timer = setTimeout(() => setCurrentStep(currentStep + 1), 2000)
-      return () => clearTimeout(timer)
-    } else {
-      setIsComplete(true)
-    }
-  }, [currentStep])
+    const timer = setInterval(() => {
+      setCurrentStep((prevStep) => {
+        if (prevStep < steps.length - 1) {
+          return prevStep + 1
+        } else {
+          setIsComplete(true)
+          return 0 // Reset to start for infinite loop
+        }
+      })
+    }, 3000)
 
-  useEffect(() => {
-    const loopTimer = setInterval(() => {
-      setSummaryIndex((prevIndex) => (prevIndex + 1) % steps.length)
-    }, 3000) // Change summary every 3 seconds
-    return () => clearInterval(loopTimer)
+    return () => clearInterval(timer)
   }, [])
 
-  const pathLength = 1200  // Increased the length to give space on both ends
-  const amplitude = 75
-  const frequency = 0.6
+  const size = 400 // Increased size for the SVG
+  const center = size / 2
+  const radius = size * 0.4
 
-  const path =
-    `M0,${amplitude} ` +
-    Array.from({ length: pathLength }, (_, i) => i)
-      .map((x) => `L${x},${amplitude + Math.sin((x * frequency * Math.PI) / 180) * amplitude}`)
-      .join(" ")
+  const getPoint = (index: number) => {
+    const angle = (Math.PI / 4) * index - Math.PI / 8
+    return {
+      x: center + radius * Math.cos(angle),
+      y: center + radius * Math.sin(angle),
+    }
+  }
+
+  const octagonPath =
+    Array.from({ length: 8 }, (_, i) => {
+      const point = getPoint(i)
+      return `${i === 0 ? "M" : "L"}${point.x},${point.y}`
+    }).join(" ") + "Z"
 
   return (
-    <div className="w-full max-w-5xl mx-auto perspective-1000">
-      {/* SVG is shown on medium and larger screens (hidden on small screens) */}
-      <svg className="w-full h-96 hidden md:block" viewBox={`0 0 ${pathLength} ${amplitude * 2}`} >
-        <motion.path
-          d={path}
-          fill="none"
-          stroke="#e0e0e0"
-          strokeWidth="2"
-        />
-        <motion.path
-          d={path}
-          fill="none"
-          stroke="#3b82f6"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: currentStep / steps.length }}  // Sync path length with currentStep
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        />
-        {steps.map((step, index) => {
-          const x = (pathLength / (steps.length - 1)) * index
-          const y = amplitude + Math.sin((x * frequency * Math.PI) / 180) * amplitude
-
-          // Ensure the circle and the path stop at the same point
-          const isCircleVisible = currentStep > index  // Show the circle at the current step position
-
-          return (
-            <motion.g
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isCircleVisible ? 1 : 0 }}  // Fade in the circle based on progress
-            >
-              <circle cx={x} cy={y} r="10" fill="#3b82f6" />
-              <text
-                x={x}  // Circle's position is based on the x-coordinate
-                y={y - 15}
-                textAnchor="middle"
-                fontSize="25"
-                fill="#333"
-              >
-                {step.text}
-              </text>
-            </motion.g>
-          )
-        })}
-      </svg>
-
-      {/* Desktop Summary (not looping) */}
-      <motion.div
-        className="mt-8 text-center text-xl font-semibold hidden md:block border-t-4 border-b-4 border-gray-300"
-        key={currentStep}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {currentStep < steps.length ? steps[currentStep].summary : "Process Complete!"}
-      </motion.div>
-
-      {/* Mobile Responsiveness: Display summary text animation on mobile */}
-      <div className="md:hidden block mt-8 text-center text-0.7xl font-semibold">
+    <div className="w-full max-w-4xl mx-auto p-4">
+      <div className="hidden md:block">
+        <svg className="w-full h-[400px]" viewBox={`0 0 ${size} ${size}`}>
+          <motion.path d={octagonPath} fill="none" stroke="#e0e0e0" strokeWidth="2" />
+          <motion.path
+            d={octagonPath}
+            fill="none"
+            stroke="#4a4a4a"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: isComplete ? 1 : (currentStep + 1) / steps.length }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          />
+          {steps.map((step, index) => {
+            const point = getPoint(index)
+            return (
+              <motion.g key={index} initial={{ opacity: 0 }} animate={{ opacity: currentStep >= index ? 1 : 0 }}>
+                <circle cx={point.x} cy={point.y} r="6" fill="#4a4a4a" /> {/* Increased circle size */}
+                <text x={point.x} y={point.y - 12} textAnchor="middle" fontSize="14" fill="#333"> {/* Increased font size */}
+                  {step.text}
+                </text>
+              </motion.g>
+            )
+          })}
+        </svg>
+      </div>
+      <AnimatePresence mode="wait">
         <motion.div
-          className="summary-loop p-6 border-t-4 border-b-4 border-gray-300 rounded-md"
-          key={summaryIndex}
+          key={currentStep}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
+          className="mt-8 text-center"
         >
-          {steps[summaryIndex].summary}
+          <div className="inline-block px-8 py-4 border-t border-b border-gray-300 rounded-lg shadow-md bg-white"> {/* Increased padding and styling */}
+            <h2 className="text-2xl font-semibold mb-3">{steps[currentStep].text}</h2> {/* Increased font size */}
+            <p className="text-gray-600 text-lg">{steps[currentStep].summary}</p> {/* Increased font size */}
+          </div>
         </motion.div>
-      </div>
-
-      {/* Loop the summary text animation only on mobile */}
-      <style jsx>{`
-        .summary-loop {
-          animation: loopSummary 3s linear infinite; /* Loop the summary animation every 3 seconds */
-        }
-
-        @keyframes loopSummary {
-          0% {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          50% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-        }
-      `}</style>
+      </AnimatePresence>
     </div>
   )
 }
 
-export default SineCurveAnimation
-
+export default OctagonalProcessFlow
