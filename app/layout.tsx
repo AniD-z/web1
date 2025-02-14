@@ -1,16 +1,22 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./styles/globals.css";
+import type { Metadata, Viewport } from "next";
+import "../app/styles/globals.css"; // Import global styles (excluding font)
+import { Raleway } from 'next/font/google';
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--poppins",
+const raleway = Raleway({
+  subsets: ['latin'],
+  variable: '--font-raleway', // Define a CSS variable for the font family
 });
 
 export const metadata: Metadata = {
   title: "SNTLY",
   description: "Threaded sustainably always",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -20,7 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-serif`}>{children}</body>
+      <body className={`${raleway.className}`} style={{ fontFamily: raleway.style.fontFamily }}>
+        {children}
+      </body>
     </html>
   );
 }

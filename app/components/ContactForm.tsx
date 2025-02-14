@@ -4,6 +4,9 @@ import { useState } from "react"
 import { Button as MUIButton } from "@mui/material"
 import TextField from "@mui/material/TextField"
 import TextareaAutosize from "@mui/material/TextareaAutosize"
+import { sendEmail } from "../actions/sendEmail"
+import { toast, ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 interface ContactFormProps {
   onClose: () => void
@@ -13,12 +16,38 @@ export default function ContactForm({ onClose }: ContactFormProps) {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [emailError, setEmailError] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!regex.test(email)) {
+      setEmailError("Please enter a valid email address")
+      return false
+    }
+    setEmailError("")
+    return true
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission logic here
-    console.log("Form submitted:", { name, email, message })
-    onClose()
+    if (!validateEmail(email)) return
+
+    const formData = new FormData()
+    formData.append("name", name)
+    formData.append("email", email)
+    formData.append("message", message)
+
+    try {
+      const result = await sendEmail(formData)
+      if (result.success) {
+        toast.success("Your message has been sent successfully.")
+        onClose()
+      } else {
+        toast.error("Failed to send your message. Please try again.")
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later.")
+    }
   }
 
   return (
@@ -44,8 +73,11 @@ export default function ContactForm({ onClose }: ContactFormProps) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onBlur={() => validateEmail(email)}
               fullWidth
               required
+              error={!!emailError}
+              helperText={emailError}
             />
           </div>
           <div>
@@ -68,8 +100,8 @@ export default function ContactForm({ onClose }: ContactFormProps) {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   )
 }
-
 

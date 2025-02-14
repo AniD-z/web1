@@ -17,10 +17,10 @@ const config: Config = {
         grayDark: "#14101d", // Dark gray
         black: "#11101d", // Black text or accents
         white: "#ffffff", // Pure white background
-        
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"], // Ensure Raleway font is included
       },
       borderRadius: {
         'none': '0px',
@@ -39,11 +39,8 @@ const config: Config = {
       lg: "1200px",
       xl: "1700px",
     },
-    
   },
-  
   plugins: [],
 }
 
 export default config
-

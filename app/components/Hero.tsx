@@ -1,138 +1,83 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
-import { slideIn } from "../styles/animations"
-import { robot } from "../../public"
+import { MasonryCarousel } from "./image-carousel"
+import { FloatingPaths } from "./FloatingPaths"
 import GetStarted from "./GetStarted"
-import { FloatingPaths } from "../components/FloatingPaths"
-import { ImageCarousel } from "../components/image-carousel"
 
 const images = [
   {
     src: "https://i.imgur.com/KfodASO.jpg",
-    alt: "Textile production images showing sewing and dyeing processes",
-    width: 400,  // Use numeric values for width and height
+    alt: "Textile production process showcasing craftsmanship",
+    width: 400,
     height: 300,
-    priority: false, // Set priority to false unless critical
+    priority: true,
   },
   {
     src: "https://i.imgur.com/1ZUoXMv.png",
-    alt: "Textile production images showing sewing and dyeing processes",
+    alt: "Detailed view of textile manufacturing",
     width: 400,
     height: 300,
-    priority: true, // Set to true for LCP (above-the-fold) image
   },
   {
     src: "https://i.imgur.com/WyhwLeT.png",
-    alt: "Textile production images showing sewing and dyeing processes",
+    alt: "Premium fabric production process",
     width: 400,
     height: 300,
-    priority: false,
   },
   {
     src: "https://i.imgur.com/RfCCxJ9.png",
-    alt: "Textile production images showing sewing and dyeing processes",
+    alt: "Quality control in textile manufacturing",
     width: 400,
     height: 300,
-    priority: false,
   },
   {
     src: "https://i.imgur.com/DOEupSE.png",
-    alt: "Textile production images showing sewing and dyeing processes",
+    alt: "Artisanal textile crafting process",
     width: 400,
     height: 300,
-    priority: false,
   },
   {
     src: "https://i.imgur.com/hQjlnMd.png",
-    alt: "Textile production images showing sewing and dyeing processes",
+    alt: "Precision in textile production",
     width: 400,
     height: 300,
-    priority: false,
   },
-  {
-    src: "https://i.imgur.com/dzyvom3.png",
-    alt: "Textile production images showing sewing and dyeing processes",
-    width: 400,
-    height: 300,
-    priority: false,
-  },
-  {
-    src: "https://i.imgur.com/0HO9GA3.png",
-    alt: "Textile production images showing sewing and dyeing processes",
-    width: 400,
-    height: 300,
-    priority: false,
-  },
-  {
-    src: "https://i.imgur.com/japxRlz.png",
-    alt: "Textile production images showing sewing and dyeing processes",
-    width: 400,
-    height: 300,
-    priority: false,
-  },
-  {
-    src: "https://i.imgur.com/QerdJKg.png",
-    alt: "Textile production images showing sewing and dyeing processes",
-    width: 400,
-    height: 300,
-    priority: false,
-  },
-];
+]
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <section id="/home" className="flex md:flex-row flex-col relative">
-      {/* Add FloatingPaths here */}
-      <div className="absolute inset-0 z-0 hidden sm:block">
+    <section className="flex flex-col lg:flex-row min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
       <motion.div
-        className="flex-1 flexStart flex-col xl:px-0 padding relative z-10"
-        variants={slideIn("left", "tween", 0.1, 0.5)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
+        className="flex-1 flex flex-col justify-center px-6 lg:px-12 py-12 relative z-10"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <div className="flex flex-col ss:flex-row justify-center ss:justify-between items-center w-full paddingY">
-          <h1 className="flex-1 font-poppins font-semibold ss:text-[48px] text-[36px] text-black ss:leading-[60px] leading-[50px] text-center ss:text-left">
-            Concept to Delivery <br className="sm:block hidden" /> <span className="text-gradient">Solution</span>
-          </h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          Artisanal Excellence in
+          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent block mt-2">
+            Textile Craftsmanship
+          </span>
+        </h1>
 
-          <div className="ss:flex hidden md:mr-4 mr-0">
-            <GetStarted />
-          </div>
-        </div>
-        <p className="paragraph max-w-[470px] mt-5 ss:text-[26px] text-[20px]">
-          “Turning Ideas into Reality, Every Step of the Way.”
+        <p className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-xl">
+          Where tradition meets innovation, creating premium textiles that define luxury and sustainability.
         </p>
+
+        <div className="mt-8">
+          <GetStarted />
+        </div>
       </motion.div>
 
-      <div className="flex-1 flex justify-center items-center paddingX md:my-0 my-10 relative z-10">
-        <ImageCarousel
-          images={images.map((image) => ({
-            ...image,
-            // Use Next.js Image with priority and width/height auto to preserve aspect ratio
-            component: (
-              <Image
-                key={image.src}
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                priority={image.priority}
-                style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
-              />
-            ),
-          }))}
-          className="h-screen w-full overflow-hidden"
-        />
+      <div className="flex-1 relative z-10 h-[400px] lg:h-screen">
+        <MasonryCarousel images={images} className="w-full h-full" />
       </div>
     </section>
-  );
+  )
 }
-
-export default Hero;

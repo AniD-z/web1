@@ -2,50 +2,153 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { cn } from "../../lib/utils"
+import { motion, useAnimationControls } from "framer-motion"
+import { cn } from "@/lib/utils"
 
-interface CarouselProps {
+interface MasonryCarouselProps {
   images: {
     src: string
     alt: string
+    width: number
+    height: number
+    priority?: boolean
+    className?: string
   }[]
   className?: string
 }
 
-export function ImageCarousel({ images, className }: CarouselProps) {
-  const [currentIndex, setCurrentIndex] = React.useState(0)
+export function MasonryCarousel({ images, className }: MasonryCarouselProps) {
+  const controls = useAnimationControls()
+  const [isHovered, setIsHovered] = React.useState(false)
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 3000) // Change slide every 3 seconds
+    const animate = async () => {
+      await controls.start({
+        x: [0, -50 * images.length],
+        transition: {
+          duration: (20 * images.length) / (isHovered ? 4 : 1),
+          ease: "linear",
+          repeat: Number.POSITIVE_INFINITY,
+        },
+      })
+    }
+    animate()
+  }, [controls, images.length, isHovered])
 
-    return () => clearInterval(interval)
-  }, [images.length])
+  // Split images into two groups for top and bottom rows
+  const topRowImages = images.slice(0, Math.ceil(images.length / 2))
+  const bottomRowImages = images.slice(Math.ceil(images.length / 2))
 
   return (
-    <div className={cn("relative h-[70vh] w-full overflow-hidden bg-background", className)}>
-      {images.map((image, index) => (
-        <div
-          key={image.src}
-          className={cn("absolute h-full w-full transition-transform duration-500 ease-in-out", {
-            "translate-x-0 opacity-100": index === currentIndex,
-            "translate-x-full opacity-50": index > currentIndex,
-            "-translate-x-full opacity-50": index < currentIndex,
-          })}
-        >
-          <div className="relative w-full h-0 pb-[200%] sm:pb-[225%] lg:pb-[100%] md:pb-[100%]">
-            <Image
-              src={image.src || "/placeholder.svg"}
-              alt={image.alt}
-              fill // Use fill for layout
-              className="object-cover" // Use object-cover in the className
-              sizes="(max-width: 768px) 100vw, 50vw"  // Responsive sizing for different screen widths
-              priority={index === 0}
-            />
+    <div
+      className={cn("relative overflow-hidden w-full", className)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div
+        className="flex gap-8 absolute left-0 top-0 h-full"
+        animate={controls}
+        style={{ width: "fit-content" }}
+      >
+        {/* First set of images */}
+        <div className="flex flex-col gap-4">
+          {/* Mobile view - single row of square images */}
+          <div className="flex gap-4 lg:hidden">
+            {images.map((image, index) => (
+              <div key={`mobile-${image.src}-1`} className="relative w-[200px] h-[200px] shrink-0">
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="200px"
+                  priority={image.priority}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop view - two rows with different heights */}
+          <div className="hidden lg:flex gap-4">
+            {topRowImages.map((image, index) => (
+              <div key={`${image.src}-top-1`} className="relative w-[300px] h-[250px] shrink-0">
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="300px"
+                  priority={image.priority}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:flex gap-4">
+            {bottomRowImages.map((image, index) => (
+              <div key={`${image.src}-bottom-1`} className="relative w-[300px] h-[350px] shrink-0">
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="300px"
+                  priority={false}
+                />
+              </div>
+            ))}
           </div>
         </div>
-      ))}
+
+        {/* Duplicate set for seamless loop */}
+        <div className="flex flex-col gap-4">
+          {/* Mobile view - single row of square images */}
+          <div className="flex gap-4 lg:hidden">
+            {images.map((image, index) => (
+              <div key={`mobile-${image.src}-2`} className="relative w-[200px] h-[200px] shrink-0">
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="200px"
+                  priority={false}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop view - two rows with different heights */}
+          <div className="hidden lg:flex gap-4">
+            {topRowImages.map((image, index) => (
+              <div key={`${image.src}-top-2`} className="relative w-[300px] h-[250px] shrink-0">
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="300px"
+                  priority={false}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:flex gap-4">
+            {bottomRowImages.map((image, index) => (
+              <div key={`${image.src}-bottom-2`} className="relative w-[300px] h-[350px] shrink-0">
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="300px"
+                  priority={false}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </div>
   )
 }
+

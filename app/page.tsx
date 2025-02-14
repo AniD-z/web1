@@ -1,8 +1,7 @@
 import {
   Navbar,
   Hero,
-  Stats,
-  Billing,
+
   Business,
   CardDeal,
   Testimonials,
@@ -20,7 +19,6 @@ export default function Home() {
       <header className="flexCenter">
         <nav className="boxWidth">
           <Navbar />
-          
         </nav>
       </header>
       <section className=" bg-primary flexStart">
@@ -34,15 +32,13 @@ export default function Home() {
           <SineCurveAnimation />
           <CardDeal />
           <CTA />
-          <Testimonials />
+          
         </section>
       </section>
       <section className=" bg-primary ">
-      <section className="boxWidth">
-        
+      <section className="boxWidth"> 
       <Footer />
       </section>
-
       </section>
     </main>
   );
