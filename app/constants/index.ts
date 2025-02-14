@@ -18,8 +18,9 @@ import {
   export const navLinks = [
     { id: "home", title: "Home", path: "/" },
     { id: "products", title: "Products", path: "/products" },
-    { id: "contacts", title: "Contacts", path: "/contacts" }
+    { id: "contacts", title: "Contact Us", path: "#" } // Re-add "Contact Us" but set the path to '#'
   ];
+  
   
   export const features = [
     {

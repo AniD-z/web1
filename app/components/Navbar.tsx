@@ -6,10 +6,12 @@ import Image from "next/image";
 import { close, logo, menu } from "../../public";
 import Link from "next/link"; // Import Link from next/link
 import { navLinks } from "../constants/index";
+import ContactForm from "./ContactForm"; // Import the ContactForm component
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false); // State for opening/closing the contact form
 
   // UseRef with correct type
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -31,6 +33,15 @@ const Navbar = () => {
     };
   }, [toggle]);
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent the default behavior of the link
+    setIsContactFormOpen(true); // Open the ContactForm when "Contact Us" is clicked
+  };
+
+  const handleCloseForm = () => {
+    setIsContactFormOpen(false); // Close the form
+  };
+
   return (
     <>
       {/* The Navbar */}
@@ -51,9 +62,14 @@ const Navbar = () => {
               className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-secondary ${
                 active === nav.title ? "text-secondary" : "text-white"
               } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-              onClick={() => setActive(nav.title)}
+              onClick={() => {
+                setActive(nav.title);
+                if (nav.title === "Contact Us") {
+                  handleContactClick(event); // Open the ContactForm when "Contact Us" is clicked
+                }
+              }}
             >
-              <Link href={nav.path}>{nav.title}</Link>
+              <Link href={nav.path}>{nav.title}</Link> {/* Link */}
             </li>
           ))}
         </ul>
@@ -103,7 +119,12 @@ const Navbar = () => {
               className={`font-poppins font-medium cursor-pointer text-[24px] ${
                 active === nav.title ? "text-secondary" : "text-white"
               } ${index === navLinks.length - 1 ? "mb-1" : "mb-5"}`}
-              onClick={() => setActive(nav.title)}
+              onClick={() => {
+                setActive(nav.title);
+                if (nav.title === "Contact Us") {
+                  handleContactClick(event); // Open the ContactForm when "Contact Us" is clicked
+                }
+              }}
             >
               <Link href={nav.path} key={nav.id}>
                 {nav.title}
@@ -112,6 +133,9 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
+
+      {/* Show the ContactForm popup if it's open */}
+      {isContactFormOpen && <ContactForm onClose={handleCloseForm} />}
     </>
   );
 };
