@@ -2,24 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Raleway:wght@300;400;600&display=swap');
+
 /* Apply Raleway font globally */
 body {
   margin: 0;
-  padding: 0; /* Remove any default padding */
-  background-color: #ffffff; /* Set the body background to white */
+  padding: 0;
+  background-color: #ffffff;
   scroll-behavior: smooth;
-  width: 100%; /* Ensure body takes full width */
+  width: 100%;
   overflow-x: hidden;
-  font-family: var(--font-raleway); /* Use the font variable */
+  font-family: 'Raleway', sans-serif; /* Use the Raleway font */
 }
 
 /* Global reset to ensure no unwanted inheritance */
 *,
 *::before,
 *::after {
-  box-sizing: border-box; /* Include padding and borders in element's total width */
+  box-sizing: border-box;
   scroll-behavior: smooth;
-  background-color: transparent; /* This helps prevent unexpected background color inheritance */
+  background-color: transparent;
 }
 
 /* Set up custom root styles for gradients, shadows, etc. */
@@ -37,109 +40,30 @@ body {
 .bg-blue-gradient {
   background: linear-gradient(
     157.81deg,
-    #2d2b2b -43.27%, /* light gray */
-    #dcdcdc -21.24%, /* medium gray */
-    #b5b5b5 12.19%, /* darker gray */
-    #8e8e8e 29.82%, /* dark gray */
-    #707070 51.94%, /* dark gray */
-    #505050 90.29% /* near black */
+    #2d2b2b -43.27%, 
+    #dcdcdc -21.24%, 
+    #b5b5b5 12.19%, 
+    #8e8e8e 29.82%, 
+    #707070 51.94%, 
+    #505050 90.29%
   );
 }
 
 .bg-black-gradient {
   background: linear-gradient(
     144.39deg,
-    #ffffff -278.56%, /* white */
-    #6d6d6d -78.47%, /* medium gray */
-    #11101d 91.61% /* black */
-  );
-}
-
-.bg-black-gradient-2 {
-  background: linear-gradient(
-    -168.39deg,
-    #ffffff -278.56%, /* white */
-    #6d6d6d -78.47%, /* medium gray */
-    #11101d 91.61% /* black */
+    #ffffff -278.56%, 
+    #6d6d6d -78.47%, 
+    #11101d 91.61%
   );
 }
 
 .bg-gray-gradient {
   background: linear-gradient(
     153.47deg,
-    rgba(255, 255, 255, 0) -341.94%, /* transparent white */
-    #14101d 95.11% /* black */
+    rgba(255, 255, 255, 0) -341.94%, 
+    #14101d 95.11%
   );
-}
-
-.bg-discount-gradient {
-  background: linear-gradient(125.17deg, #272727 2%, #f5f5f5 100%);
-}
-
-.box-shadow {
-  box-shadow: 0px 20px 100px -10px rgba(0, 0, 0, 0.1); /* softer shadow */
-}
-
-/* Sidebar Animation */
-.sidebar {
-  -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@-webkit-keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(100px);
-    transform: translateY(100px);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(100px);
-    transform: translateY(100px);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-/* Hover Effects */
-.feature-card:hover {
-  background: var(--black-gradient);
-  box-shadow: var(--card-shadow);
-}
-
-.feedback-container .feedback-card:last-child {
-  margin-right: 0px;
-}
-
-.feedback-card {
-  background: transparent;
-}
-
-.feedback-card:hover {
-  background: var(--black-gradient);
-}
-
-/* Blurred Gradient Backgrounds */
-.blue__gradient {
-  background: linear-gradient(180deg, rgba(249, 249, 250, 0.953) 5%, #f5f5f5 100%);
-  filter: blur(123px);
-}
-
-.pink__gradient {
-  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
-  filter: blur(900px);
-}
-
-.white__gradient {
-  background: rgba(255, 255, 255, 0.6);
-  filter: blur(750px);
 }
 
 /* Layout and Spacing Fixes */
@@ -151,27 +75,27 @@ body {
   }
 
   .boxWidth {
-    @apply xl:max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8; /* Centered with padding */
+    @apply xl:max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .heading2 {
     @apply font-semibold xs:text-[52px] text-[42px] text-black xs:leading-[76.8px] leading-[66.8px] w-full;
   }
-  
+
   .paragraph {
-    @apply font-normal text-gray-800 text-[22px] leading-[30.8px]; /* dark gray text */
+    @apply font-normal text-gray-800 text-[22px] leading-[30.8px];
   }
-  
+
   .flexCenter {
     @apply flex justify-center items-center;
   }
-  
+
   .flexStart {
     @apply flex justify-center items-start;
   }
-  
+
   .paddingX {
-    @apply sm:px-16 px-6; /* Make sure this padding is consistent across different screen sizes */
+    @apply sm:px-16 px-6;
   }
 
   .paddingY {
@@ -194,7 +118,7 @@ body {
   .section {
     @apply flex md:flex-row flex-col paddingY;
   }
-  
+
   .sectionReverse {
     @apply flex md:flex-row flex-col-reverse paddingY;
   }

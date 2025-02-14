@@ -60,11 +60,11 @@ export default function Hero() {
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-          Artisanal Excellence in
-          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent block mt-2">
-            Textile Craftsmanship
-          </span>
-        </h1>
+  Concept to 
+  <span className="bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent block mt-2">
+    Delivery Solution
+  </span>
+</h1>
 
         <p className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-xl">
           Where tradition meets innovation, creating premium textiles that define luxury and sustainability.
