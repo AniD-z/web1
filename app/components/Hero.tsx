@@ -61,9 +61,10 @@ export default function Hero() {
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
   Concept to 
-  <span className="bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent block mt-2">
-    Delivery Solution
-  </span>
+  <span className="bg-gradient-to-r from-gray-800 to-gray-400 bg-clip-text text-transparent block mt-2">
+  Delivery Solution
+</span>
+
 </h1>
 
         <p className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-xl">
