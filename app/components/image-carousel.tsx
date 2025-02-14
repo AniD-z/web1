@@ -13,7 +13,7 @@ interface MasonryCarouselProps {
     height: number
     priority?: boolean
     className?: string
-  }[]
+  }[] 
   className?: string
 }
 
@@ -52,8 +52,8 @@ export function MasonryCarousel({ images, className }: MasonryCarouselProps) {
       >
         {/* First set of images */}
         <div className="flex flex-col gap-4">
-          {/* Mobile view - single row of square images */}
-          <div className="flex gap-4 lg:hidden">
+          {/* Mobile view - single row of square images at the bottom */}
+          <div className="flex gap-4 lg:hidden justify-end">
             {images.map((image, index) => (
               <div key={`mobile-${image.src}-1`} className="relative w-[200px] h-[200px] shrink-0">
                 <Image
@@ -101,8 +101,8 @@ export function MasonryCarousel({ images, className }: MasonryCarouselProps) {
 
         {/* Duplicate set for seamless loop */}
         <div className="flex flex-col gap-4">
-          {/* Mobile view - single row of square images */}
-          <div className="flex gap-4 lg:hidden">
+          {/* Mobile view - single row of square images at the bottom */}
+          <div className="flex gap-4 lg:hidden justify-end">
             {images.map((image, index) => (
               <div key={`mobile-${image.src}-2`} className="relative w-[200px] h-[200px] shrink-0">
                 <Image
@@ -151,4 +151,3 @@ export function MasonryCarousel({ images, className }: MasonryCarouselProps) {
     </div>
   )
 }
-

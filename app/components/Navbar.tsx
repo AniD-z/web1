@@ -33,6 +33,7 @@ const Navbar = () => {
     };
   }, [toggle]);
 
+  // Updated handleContactClick to explicitly accept a MouseEvent
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent the default behavior of the link
     setIsContactFormOpen(true); // Open the ContactForm when "Contact Us" is clicked
@@ -62,10 +63,10 @@ const Navbar = () => {
               className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-secondary ${
                 active === nav.title ? "text-secondary" : "text-white"
               } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-              onClick={() => {
+              onClick={(e) => {
                 setActive(nav.title);
                 if (nav.title === "Contact Us") {
-                  handleContactClick(event); // Open the ContactForm when "Contact Us" is clicked
+                  handleContactClick(e); // Open the ContactForm when "Contact Us" is clicked
                 }
               }}
             >
@@ -119,10 +120,10 @@ const Navbar = () => {
               className={`font-poppins font-medium cursor-pointer text-[24px] ${
                 active === nav.title ? "text-secondary" : "text-white"
               } ${index === navLinks.length - 1 ? "mb-1" : "mb-5"}`}
-              onClick={() => {
+              onClick={(e) => {
                 setActive(nav.title);
                 if (nav.title === "Contact Us") {
-                  handleContactClick(event); // Open the ContactForm when "Contact Us" is clicked
+                  handleContactClick(e); // Open the ContactForm when "Contact Us" is clicked
                 }
               }}
             >
