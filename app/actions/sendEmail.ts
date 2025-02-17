@@ -19,7 +19,7 @@ export async function sendEmail(formData: FormData) {
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "info.sntly@gmail.com",
+      to: "info@sntly.com",
       subject: "New Contact Form Submission",
       text: `
         Name: ${name}
