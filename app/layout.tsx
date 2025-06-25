@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../app/styles/globals.css"; // Import global styles (excluding font)
 import { Raleway } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/next"
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${raleway.className}`} style={{ fontFamily: raleway.style.fontFamily }}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
